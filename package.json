@@ -1,0 +1,20 @@
+{
+  "name": "leave-management-system-api-s",
+  "version": "1.0.0",
+  "description": "THis is a leave manegment system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nidh-i-Sharma/Leave-Management-System-Api-s.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nidh-i-Sharma/Leave-Management-System-Api-s/issues"
+  },
+  "homepage": "https://github.com/Nidh-i-Sharma/Leave-Management-System-Api-s#readme"
+}
