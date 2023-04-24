@@ -1,14 +1,14 @@
-const express = require('express');
-const router = express.Router();
-const Leave = require('../models/leave');
-const User = require('../models/user');
+import { Router } from 'express';
+const router = Router();
+import Leave from '../modal/leave.js';
+import User from '../modal/user.js';
 
 router.post('/apply-leave', async (req, res) => {
   try {
     const { username, leave_type, duration } = req.body;
 
     // Find user by username
-    const user = await User.findOne({ username });
+    const user = await findOne({ username });
 
     // Calculate available leaves for selected leave type
     const availableLeaves = leave_type === 'Sick' ? user.sick_leaves : user.casual_leaves;
@@ -64,4 +64,6 @@ router.post('/create-user', async (req, res) => {
       console.error(err);
       res.status(500).json({ message: 'Server error' });
     }
-  });
+});
+
+export default router;

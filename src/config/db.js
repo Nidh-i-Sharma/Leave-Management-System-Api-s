@@ -27,7 +27,7 @@
 
 import mongoose from 'mongoose'
 mongoose.set('strictQuery', true);
-const connectDB = async (mongoDBURL: string | undefined) => {
+const connectDB = async (mongoDBURL) => {
   try {
       const conn = await mongoose.connect('mongodb://localhost:27017/VillageSurvey')
       console.log(`MongoDB Connected.....`)

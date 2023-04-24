@@ -1,7 +1,7 @@
 import express from 'express'; 
 import * as dotenv from 'dotenv'
-import connectDB from './config/db';
-import home from './controller/home'
+import connectDB from './config/db.js';
+import home from './controller/home.js'
 const app = express();
 dotenv.config()
 
