@@ -7,13 +7,10 @@ router.post('/apply-leave', async (req, res) => {
   try {
     const { username, leave_type, duration } = req.body;
 
-    // Find user by username
-    const user = await findOne({ username });
+    const user = await User.findOne({ username });
 
-    // Calculate available leaves for selected leave type
-    const availableLeaves = leave_type === 'Sick' ? user.sick_leaves : user.casual_leaves;
+    const availableLeaves = leave_type === 'Sick' ? user?.sick_leaves : user?.casual_leaves;
 
-    // Check if user has sufficient leaves for selected leave type
     if (duration > availableLeaves) {
       return res.status(400).json({ message: `Insufficient ${leave_type} leaves available` });
     }
@@ -34,11 +31,9 @@ router.post('/apply-leave', async (req, res) => {
       user.casual_leaves -= duration;
     }
 
-    // Save changes to database
     await leave.save();
     await user.save();
 
-    // Send response
     res.status(201).json({ message: 'Leave application submitted successfully' });
   } catch (err) {
     console.error(err);
@@ -48,7 +43,9 @@ router.post('/apply-leave', async (req, res) => {
 router.post('/create-user', async (req, res) => {
     try {
       const { username, department } = req.body;
-  
+        
+      const userName = await User.findOne({ username });
+      if(userName) return res.status(400).json({message:'user already exist'})
       // Create new user record
       const user = new User({
         username,

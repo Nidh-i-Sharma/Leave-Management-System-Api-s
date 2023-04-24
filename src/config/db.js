@@ -29,7 +29,7 @@ import mongoose from 'mongoose'
 mongoose.set('strictQuery', true);
 const connectDB = async (mongoDBURL) => {
   try {
-      const conn = await mongoose.connect('mongodb://localhost:27017/VillageSurvey')
+      const conn = await mongoose.connect('mongodb://localhost:27017/LeaveManagement')//put this into .env file
       console.log(`MongoDB Connected.....`)
   } catch (error) {
     console.log(error)
